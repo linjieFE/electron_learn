@@ -15,10 +15,10 @@ app.on('ready',ml_createWindow)
 
 // 创建窗口
 // 自已定义的方法 建议加一个前缀
-let window
+let win
 function ml_createWindow(){
     //1.1 创建窗口
-    window = new BrowserWindow({//control 点对象，可查看内置方法和属性
+    win = new BrowserWindow({//control 点对象，可查看内置方法和属性
         width:500,// 宽
         height:500,// 高
         movable:true,// 是否可移动
@@ -30,23 +30,21 @@ function ml_createWindow(){
     //_dirname : 当前js文件所在的文件夹路径 类似:c:usr/...01-helloworld 绝对路径
     // 第二个参数 当文件的相对路径 './index.html'
     // 第三个参数 如是Mac系统 还要再加一个'file://'参数
-    //window.loadURL(path.join(_dirname,'./index.html'))  //=>win系统
-    window.loadURL(path.join('file://',__dirname,'./index.html'))
+    //win.loadURL(path.join(_dirname,'./index.html'))  //=>win系统
+    win.loadURL(path.join('file://',__dirname,'./index.html'))
 
     //1.3 调试工具
     // webContent : 控制和渲染页面的 也是window的一个属性
-    window.webContents.openDevTools();
+    win.webContents.openDevTools();
 
     //1.4 关闭窗口的事件
-    window.on('closed',function(){
+    win.on('closed',function(){
         //TODO :关闭窗口的事件
-        window=null;
+        win=null;
     })
-    
-    // Electron 会在初始化后并准备
-    // 创建浏览器窗口时，调用这个函数。
-    // 部分 API 在 ready 事件触发后才能使用。
-    app.on('ready', createWindow)
+
+    // 1.5 引入设置菜单文件
+    require('./menu');
 }
 //执行文件3种方式
 /**
