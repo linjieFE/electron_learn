@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>共享数据</h1>
+ 
+    <!-- electron 基于 node -->
+    <button id="btn1">改变数据</button> 
+    <button id="btn2">获取数据</button> 
+    <script>
+        require("./render-process/a.js")
+        require("./render-process/b.js")
+    </script>     
+</body>
+</html>
