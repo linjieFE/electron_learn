@@ -6,7 +6,7 @@ git commit -m "first commit"
 git remote add origin https://github.com/linjieFE/electron_learn.git
 git push -u origin master
 -----------------------------
-## 安装
+## 一、安装
 ### step1应用目录下 初始化package.json
 安装前确认node版本 我本地是12.14.0 
 ```
@@ -101,3 +101,17 @@ webPreferences: {
  * nativeImage 模块: 图片对象，从剪切板中读取图片，它返回的是nativeImage
  * screen 模块: 屏幕的size，显示，鼠标位置等信息，即可根据用户显示器大小等信息进行渲染页面
  * shell 模块: 提供了集成其他桌面客端的关联功能，如果调用用户默认浏览器打开一个新窗口等
+
+## 四、进程间的通信
+
+### 4.1 渲染进程给主进程发送指令
+
+ * ipcMain 模块 : 在主进程引入，用于接收渲染进程发送的事件和进行回复
+           结构 : ipcMain.on(接收事件名，callback(事件对象，接收参数)）
+ * ipcRenderer 模块: 渲染进程引入，用于发送事件给主进程和接收主进程返回的回复事件
+               结构: ipcRenderer.send(事件名称，发射的数据)
+                    ipcRenderer.on(回复事件名称，回复的数据)
+1. 使用ipcRenderer模块发送、ipcMain 模块接收
+2. 发送代码: ipcRenderer.send('msg-a','我是渲染进程，我来了')
+  * 参数1 : 频道
+  * 参数2 : 要传输的数据字符串或对象等。
