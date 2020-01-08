@@ -11,7 +11,9 @@ git push -u origin master
 ## 一、安装
 ### step1应用目录下 初始化package.json
 1) 安装前确认node版本 我本地是12.14.0 
-2) npm i electron -g 或 cnpm i electron -g 全局安装 (最终我选用的cnpm, npm 莫名报错)
+2) npm i electron -g 或 cnpm i electron -g 全局安装 (最终我选用的cnpm, npm 莫名报错) 
+   - 全局安装之后可以项目才可以直接使用electron命令执行electron . 或 electron xxx.js 
+   - 只在开发环境下和局部环境下安装不能执行electron命令
 3) 以下内容转到开发目录下进行
 ```
 npm init -y 
@@ -19,7 +21,7 @@ npm init -y
 
 ### step2 装electron 依赖包
 ```
-官方推荐=> npm install --save-dev electron 或 npm i electron -D 
+官方推荐=> npm/cnpm install --save-dev electron 或 npm/cnpm i electron -D 或/ npm/cnpm i electron -S
 ps:我的Mac上npm 没有按装成功，用了 cnpm install --save-dev electron 安装成功
 
 ```
@@ -50,10 +52,9 @@ ps:我的Mac上npm 没有按装成功，用了 cnpm install --save-dev electron 
 }
 ```
 ## 三、主进程(Main process) 渲染进程（render process）
-入口文件就是主进程 -> main.js、menu.js(mian.js中直接引入的js文件)
+- 入口文件就是主进程 -> main.js、menu.js(mian.js中直接引入的js文件)
 
-##
-主进程创建的第一个WEB页面
+### 主进程创建的第一个WEB页面
 
 页面中引入的js文件 index.html 中引入的文件->例：test1.js (渲染进程)
 
@@ -62,7 +63,9 @@ ps:我的Mac上npm 没有按装成功，用了 cnpm install --save-dev electron 
 Electron正式版升级后发现原来能运行的代码报错提示require is not defined
 
 解决办法：
+
 修改创建BrowserWindow部分的相关代码，设置main.js属性webPreferences.nodeIntegration为 true
+
 ```
 let win = new BrowserWindow({
     webPreferences: {
@@ -110,15 +113,18 @@ webPreferences: {
 
 ### 4.1 渲染进程给主进程发送指令
 
- * ipcMain 模块 : 在主进程引入，用于接收渲染进程发送的事件和进行回复
-           结构 : ipcMain.on(接收事件名，callback(事件对象，接收参数)）
+ * ipcMain     模块 : 在主进程引入，用于接收渲染进程发送的事件和进行回复
+               结构 : ipcMain.on(接收事件名，callback(事件对象，接收参数)）
  * ipcRenderer 模块: 渲染进程引入，用于发送事件给主进程和接收主进程返回的回复事件
                结构: ipcRenderer.send(事件名称，发射的数据)
                     ipcRenderer.on(回复事件名称，回复的数据)
+
+---------------------------------------------------------------------------
+
 1. 使用ipcRenderer模块发送、ipcMain 模块接收
 2. 发送代码: ipcRenderer.send('msg-a','我是渲染进程，我来了')
-  * 参数1 : 频道
-  * 参数2 : 要传输的数据字符串或对象等。
+  - 参数1 : 频道
+  - 参数2 : 要传输的数据字符串或对象等。
 
 ####  关于 依赖package.json
 ```

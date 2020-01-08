@@ -1,12 +1,10 @@
-/**
- * 依赖package.json
- * devDependices 开发阶段用的依赖包npm ...-D默认 //dev
- * dependices 发布阶段用的依赖包 npm ...-S默认
- */
-//引入模块
+//主进程 引入模块
 const {app, BrowserWindow} = require('electron')
 const path= require('path')
+
+//监听ready 初始化应用之后
 app.on('ready',ml_createWindow)
+
 // 创建窗口
 let win
 function ml_createWindow(){
@@ -33,6 +31,9 @@ function ml_createWindow(){
 
     // 1.5 引入设置菜单文件
     require('./menu');
+
+    // 1.6 引入dialog
+    require('./main-process/dialog');
 }
 // 五、共享数据 全局变量
 global.sharedObject = {
