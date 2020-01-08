@@ -58,7 +58,7 @@ function ml_createWindow(){
 
 //主进程：打印的数据 ->终端控制台上显示
 //渲染进程：打印的数据 ->页面控制台上显示
-const {app,autoUpdater, BrowserWindow, contentTracing, dialog, globalShortcut, ipcMain, Menu, powerSaveBlocker, session, webContents} = require('electron')
+
 /**
  * 主进程可以使用的模块
  * app模块 : 控制整个应用的生命周期设计
