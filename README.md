@@ -1,10 +1,12 @@
 # electron_学习笔记
+```
 echo "# electron_learn" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/linjieFE/electron_learn.git
 git push -u origin master
+```
 -----------------------------
 ## 一、安装
 ### step1应用目录下 初始化package.json
