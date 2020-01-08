@@ -17,10 +17,20 @@ app.on('ready',ml_createWindow)
 // 自已定义的方法 建议加一个前缀
 let window
 function ml_createWindow(){
+    if(window){
+        return //防止重复创建 如果已经创建 不再重复创建
+    }
     //1.1 创建窗口
+    let paddingH=0
+    let paddingW=0
+    //mac 兼容问题
+    if(process.platform=='darwin'){
+        paddingH=-15
+        paddingW=-35
+    }
     window = new BrowserWindow({//control 点对象，可查看内置方法和属性
-        width:500,// 宽
-        height:500,// 高
+        width:500+paddingW,// 宽
+        height:500+paddingH,// 高
         movable:true,// 是否可移动
         resizable:true,// 窗口可拖曳拉伸
     })  

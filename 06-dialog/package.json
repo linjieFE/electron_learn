@@ -3,6 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
+  "build":{
+    "appId":"com.test.app",
+    "directories":{
+        "app":"./"
+    },
+    "productName":"打包项目名称",
+    "dmg":{
+      "icon":"./assets/icons/mac.icns",
+      "window":{
+        "x":200,
+        "y":150,
+        "width":540,
+        "height":380
+      }
+    },
+    "mac":{
+      "icon":"./assets/icons/mac.icns"
+    },
+    "win":{
+      "icon":"./assets/icons/win.ico"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
