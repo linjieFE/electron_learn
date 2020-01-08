@@ -8,7 +8,9 @@ git push -u origin master
 -----------------------------
 ## 一、安装
 ### step1应用目录下 初始化package.json
-安装前确认node版本 我本地是12.14.0 
+1) 安装前确认node版本 我本地是12.14.0 
+2) npm i electron -g 或 cnpm i electron -g 全局安装 (最终我选用的cnpm, npm 莫名报错)
+3) 以下内容转到开发目录下进行
 ```
 npm init -y 
 ```
@@ -115,3 +117,12 @@ webPreferences: {
 2. 发送代码: ipcRenderer.send('msg-a','我是渲染进程，我来了')
   * 参数1 : 频道
   * 参数2 : 要传输的数据字符串或对象等。
+
+####  关于 依赖package.json
+```
+ /* 
+ * devDependices 开发阶段用的依赖包npm ...-D默认 //dev
+ * dependices 发布阶段用的依赖包 npm ...-S默认
+ */
+```
+ 
