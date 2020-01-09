@@ -58,6 +58,7 @@ ps:我的Mac上npm 没有按装成功，用了 cnpm install --save-dev electron 
 
 页面中引入的js文件 index.html 中引入的文件->例：test1.js (渲染进程)
 [官网api](https://electronjs.org/docs/api) https://electronjs.org/docs/api
+
 [Electron 中文教程](https://cloud.tencent.com/developer/section/1116217) https://cloud.tencent.com/developer/section/1116217
 
 Electron正式版升级后发现原来能运行的代码报错提示require is not defined
@@ -148,5 +149,5 @@ electron-packager <应用目录> <应用名称> <打包平台> --out=<输出目�
 ```
 
 builder : 打包一个可执行文件和一个安装包
-《未完待续...》
+> 《未完待续...》
  
